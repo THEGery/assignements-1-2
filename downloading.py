@@ -38,15 +38,16 @@ def calculate_weekend_avg():
 
 def activity_suggestion():
     """Compare weekend avarage temp and suggest activity accordingly"""
-    if calculate_weekend_avg() > 25:
+    weekend_avg = calculate_weekend_avg()
+    if weekend_avg > 25:
         suggestion = 'swimming'
-    elif calculate_weekend_avg() > 12 <= 25:
+    elif weekend_avg < 25:
         suggestion = 'hiking'
-    elif calculate_weekend_avg() > 5 <= 12:
+    elif weekend_avg < 12:
         suggestion = 'watching movies'
-    elif calculate_weekend_avg() > -5 <=5:
+    elif weekend_avg < 5:
         suggestion = 'relaxing in the local hot springs'
-    elif calculate_weekend_avg() <= -5:
+    elif weekend_avg < -5:
         suggestion = 'skiing'
 
     print(f'Next weekend, {suggestion} would be a good activity.')
