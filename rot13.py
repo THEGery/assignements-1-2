@@ -32,4 +32,4 @@ def rot13(message):
 
 message = read_file(input_file)
 
-print(f'Translated message:\n{rot13(message)}')
+print(rot13(message))
