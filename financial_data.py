@@ -4,6 +4,9 @@
 .. moduleauthor:: Viktor Barath <viktor.barath7@gmail.com>
 """
 
+file_input = input('File to analyze: ') #Download Data - STOCK_AT_XWBO_ANDR.csv
+
+
 def collect_close_column_numbers(file):
     """Open file, read content, collect close column numbers stripped."""
     close_numbers = []
@@ -15,8 +18,6 @@ def collect_close_column_numbers(file):
             close_numbers.append(elements[4])
     return close_numbers[1:]
 
-close_num_list = collect_close_column_numbers(
-        'Download Data - STOCK_AT_XWBO_ANDR.csv')
 
 def avg_closing_price():
     """Calculate avg closing price."""
@@ -30,19 +31,17 @@ def avg_closing_price():
 
 def check_last_price(last_price):
     avg_closing = avg_closing_price()
-    if avg_closing < last_price:
-        indicator = 'above' #last price was above
-    elif avg_closing > last_price:
-        indicator = 'below' #last price was below
+    if avg_closing > last_price:
+        indicator = 'not ' #last price was above
     else:
-        indicator = 'the same as'
+        indicator = ''
 
     return indicator
 
-
+close_num_list = collect_close_column_numbers(file_input)
 last_price = float(close_num_list[-1])
 
-print(f'The avargae closing price was {avg_closing_price():.2f}.')
+print(f'The average closing price was {avg_closing_price():.2f}.')
 
-print(f'The most recent closing price {avg_closing_price():.2f} was '
-      f'{check_last_price(last_price)} the avarage.')
+print(f'The most recent closing price ({last_price}) was '
+      f'{check_last_price(last_price)}above the average.')
